@@ -8,12 +8,16 @@ module.exports.TRY = function (desc, fn, fail, succ){
     var error = _.first(argsArray);
     var args = _.rest(argsArray);
     if (error) {
-      return fail("while " + desc + "\n -> " + error );
+      fail("while " + desc + "\n -> " + error );
     }
-    if (_.isFunction(succ)) {
+    else if (_.isFunction(succ)) {
       succ.apply(this, args);
-    } else {
+    } else if (_.isFunction(fail)) {
       fail.apply(this, argsArray);
     }
+    
+    return function(printer){
+      printer(desc);
+    };
   });
 };

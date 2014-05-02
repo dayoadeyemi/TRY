@@ -1,9 +1,7 @@
 {
-    "name": "TRY",
-    "version": "0.0.1"
-    "author" : {
-		"name" : "Dayo Adeyemi",
-		"email" : "thedayoadeyemi@gmail.com",
-		"url" : "https://github.com/dayoadeyemi"
-	}
+  "name": "TRY",
+  "version": "0.0.1",
+  "dependencies": {
+    "lodash": "^2.4.1"
+  }
 }
