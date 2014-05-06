@@ -2,10 +2,9 @@ async-try, helper module to debug asyncronous code.
 
 usage:
 ```JavaScript
-var _ = require("lodash");
 var TRY = require("async-try").TRY;
 
-var waitForIt = _.curry(function(time, callback){
+var waitForIt = function(time, callback){
 	console.log("this module is legen...");
 	console.log("...wait for it...");
 	if ( time > 3 ){
@@ -16,19 +15,28 @@ var waitForIt = _.curry(function(time, callback){
 	} else {
 		callback("need more patience");
 	}
-});
+};
 
-TRY( "waiting for it", waitForIt(5),  console.log, function(result){
+var waitFor = function(time){
+	return function(callback) {
+		waitForIt(time, callback);
+	}
+}
+
+TRY( "waiting for it", waitFor(5),  console.log, function(result){
 	console.log("This module is " + result);
 })
 
 var dontWait = function(callback){
-	TRY( "pretending to wait for it", waitForIt(2),  callback, function(result){
+	TRY( "pretending to wait for it", waitFor(2),  callback, function(result){
 		console.log("This module is " + result);
 	});
 }
 
-TRY( "not waiting for it", dontWait,  throwErr, function(result){
+var logError = function(error){
+	console.log("[ERROR] " + error);
+}
+TRY( "not waiting for it", dontWait,  logError, function(result){
 	console.log("This module is " + result);
 })
 ```
@@ -40,10 +48,8 @@ this module is legen...
 this module is legen...
 ...wait for it...
 [ERROR] need more patience
- | While pretending to wait for it at: dontWait (C:\Users\DayoAdeyemi\vm5.6\dev-
-vm\vagrant\ece-dev\projects\async-try\test.js:27:2)
- | While not waiting for it at: Object.<anonymous> (C:\Users\DayoAdeyemi\vm5.6\d
-ev-vm\vagrant\ece-dev\projects\async-try\test.js:35:1)
+ | While pretending to wait for it at: dontWait (C:\Path\to\file.js:27:2)
+ | While not waiting for it at: Object.<anonymous> (C:\Path\to\file.js:35:1)
 ...dary
 This module is legendary!
 ```
