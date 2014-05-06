@@ -1,6 +1,7 @@
 {
   "name": "async-try",
   "version": "0.0.7",
+  "main": "async-try.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/dayoadeyemi/TRY.git"
