@@ -11,8 +11,8 @@ var waitForIt = _.curry(function(time, callback){
 	if ( time > 3 ){
 		setTimeout(function(){
 			console.log("...dary");
+			callback(null, "legendary!");
 		}, time*1000 );
-		callback(null, "legendary!");
 	} else {
 		callback("need more patience");
 	}
@@ -44,3 +44,10 @@ TRY( "waiting for it", waitForIt(2),  throwErr, function(result){
 })
 ```
 
+we get
+```
+C:\Path\to\file.js:18
+        throw new Error(error);
+              ^
+Error: while waiting for it
+ -> need more patience
