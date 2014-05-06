@@ -19,7 +19,7 @@ module.exports.TRY = function (desc, fn, fail, succ){
 	var stackTrace
     var args = _.rest(argsArray);
     if (error) {
-      fail(error + "\n"+ (_.isString(desc) && !_.isEmpty(desc))?(" | While " + desc):"" + " at:" + clean );
+      fail(error + "\n"+ ((_.isString(desc) && !_.isEmpty(desc))?(" | While " + desc):"") + " at:" + clean );
     }
     else if (_.isFunction(succ)) {
       succ.apply(this, args);
