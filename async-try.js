@@ -2,7 +2,7 @@
  * TRY
  */
 var _ = require ('lodash');
-module.exports.TRY = function (desc, fn, fail, succ){
+module.exports.TRY = _.curry(function (desc, fn, fail, succ){
 	
 	function getErrorObject(){
 		try { throw Error('') } catch(err) { return err; }
@@ -31,4 +31,4 @@ module.exports.TRY = function (desc, fn, fail, succ){
       printer(desc);
     };
   });
-};
+});
