@@ -1,9 +1,9 @@
 {
   "name": "async-try",
-  "version": "0.0.3",
-  "repository" :{ 
-	"type" : "git",
-	"url" : "https://github.com/dayoadeyemi/TRY.git"
+  "version": "0.0.4",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dayoadeyemi/TRY.git"
   },
   "dependencies": {
     "lodash": "^2.4.1"
