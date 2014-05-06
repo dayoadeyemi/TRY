@@ -1,6 +1,6 @@
 {
   "name": "async-try",
-  "version": "0.0.11",
+  "version": "0.1.0",
   "main": "async-try.js",
   "repository": {
     "type": "git",
